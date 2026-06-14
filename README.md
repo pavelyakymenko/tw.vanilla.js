@@ -1,4 +1,4 @@
-# twya.vanilla.js
+# tw.vanilla.js
 
 **tw.vanilla.js** (Tailwind Vanilla JS) — це мій навчальний репозиторій-майстерня, де я крок за кроком прокачую **Vanilla JavaScript** на практиці та збираю невеликі UI-компоненти, використовуючи **Tailwind CSS** для стилізації.
 
