@@ -44,4 +44,12 @@
 
 1. Склонуй репозиторій:
    ```bash
-   git clone [https://github.com/pavelyakymenko/tw.vanilla.js.git](https://github.com/pavelyakymenko/tw.vanilla.js.git)
+   git clone [https://github.com/pavelyakymenko/tw.vanilla.js.git](https://github.com/pavelyakymenko/tw.vanilla.js.git)```
+2. Відкрий проєкт у VS Code.
+3. Запусти через розширення Live Server (або будь-який інший локальний сервер), щоб браузер не блокував import/export в JS.
+
+## 📌 Навчальні принципи
+
+* Один приклад = одна ідея. Краще маленький, але зрозумілий модуль, ніж монстр «все в одному».
+* Читабельність > Трюки. Код повинен читатися як книга. Якщо рішення виглядає як магічний хак — ми його спрощуємо.
+* Навчальна чесність. Якщо десь видно простоту — це не мінус, це етап усвідомленого росту. Помилки тут — це паливо для прогресу.
