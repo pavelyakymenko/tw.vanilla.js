@@ -1,6 +1,6 @@
-# twya.vanilla.js
+# tw.vanilla.js
 
-`twya.vanilla.js` — навчальний JavaScript-проєкт із модульною структурою без бандлів.  
+`tw.vanilla.js` — навчальний JavaScript-проєкт із модульною структурою без бандлів.  
 Мета — практикувати **Vanilla JavaScript** через прості UI-компоненти та зручну архітектуру файлів.
 
 Проєкт побудований так, щоб кожен компонент був ізольований, легко редагувався та підключався через один головний файл.
@@ -8,13 +8,13 @@
 ## 📁 Структура проєкту
 ```
 src/
-├─ twya.vanilla.js # головний entry-файл
+├─ tw.vanilla.js # головний entry-файл
 └─ components/
     ├─ modal.js # логіка модального вікна
     ├─ drawer.js # логіка дравера
     └─ ...
 ```
-- `twya.vanilla.js` — точка входу, яка імпортує та ініціалізує компоненти  
+- `tw.vanilla.js` — точка входу, яка імпортує та ініціалізує компоненти  
 - `components/` — окремі UI-модулі з власною логікою
 
 
@@ -23,5 +23,5 @@ src/
 Підключи головний файл у HTML **як ES Module**:
 
 ```html
-<script type="module" src="src/twya.vanilla.js"></script>
+<script type="module" src="src/tw.vanilla.js"></script>
 ```
