@@ -1,7 +1,5 @@
 # Changelog
 
-## v0.1.0
-
 ## v0.1.0 — UI Core Expansion & Knowledge Base
 
 This release marks a massive expansion of our interactive component library and the transition to systematic documentation of our project’s architecture. Version Focus: working with DOM threads, deep event isolation, declarative state toggling, and moving away from inline styles in favor of clean Tailwind CSS utilities.
