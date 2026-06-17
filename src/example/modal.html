@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>tw.vanilla.js Modal</title>
+
+        <link rel="stylesheet" href="https://static.yakymenko.me/css/corey.css">
+    </head>
+
+    <body class="min-h-screen">
+        <main class="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-12 px-6 py-12 lg:px-10">
+            <section class="space-y-5">
+                <span class="inline-flex rounded-full border border-stone-700 px-3 py-1 text-xs uppercase tracking-[0.3em] text-stone-400">Components / Modal</span>
+                <div class="max-w-4xl space-y-4">
+                    <h1 class="text-4xl md:text-5xl font-bold mt-8 mb-4">Modal</h1>
+                    <p class="text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                        Use the modal plugin to layer semantic HTML5 <code class="rounded bg-stone-900 px-1.5 py-0.5 text-sm text-stone-100">&lt;dialog&gt;</code> windows above the page for confirmations,
+                        focused tasks, or fully custom content flows.
+                    </p>
+                    <p class="text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                        The API follows a Bootstrap-like mental model: a trigger declares what it wants to toggle, a target points to the modal instance, and the dialog remains a visual surface you can shape with Tailwind.
+                    </p>
+                </div>
+            </section>
+
+            <section class="grid gap-6 xl:grid-cols-2">
+                <article class="rounded-3xl border border-stone-800 bg-stone-900/70 p-6 shadow-2xl shadow-black/20">
+                    <h2 class="text-xl font-semibold text-white">Position Values</h2>
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2 text-sm leading-6 text-stone-300">
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">top-start</code> aligns the panel to the upper-left corner.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">top</code> aligns the panel to the upper center.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">top-end</code> aligns the panel to the upper-right corner.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">start</code> aligns the panel to the middle-left edge.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">center</code> aligns the panel to the true center.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">end</code> aligns the panel to the middle-right edge.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">bottom-start</code> aligns the panel to the lower-left corner.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">bottom</code> aligns the panel to the lower center.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">bottom-end</code> aligns the panel to the lower-right corner.</p>
+                    </div>
+                </article>
+
+                <article class="rounded-3xl border border-stone-800 bg-stone-900/70 p-6 shadow-2xl shadow-black/20">
+                    <h2 class="text-xl font-semibold text-white">Animation Values</h2>
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2 text-sm leading-6 text-stone-300">
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">fade</code> fades the modal root in and out.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">scale</code> fades the root and scales the panel.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">slide-down</code> fades the root and drops the panel from above.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">slide-up</code> fades the root and lifts the panel from below.</p>
+                        <p><code class="rounded bg-stone-950 px-1.5 py-0.5 text-stone-100">none</code> disables visual motion.</p>
+                    </div>
+                </article>
+            </section>
+
+            <section>
+                <div class="space-y-2">
+                    <h2 class="text-3xl font-semibold mt-8 mb-4">Modal position</h2>
+                    <p class="text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                        Modals can be placed in one of nine positions using the <code>data-tw-position</code> attribute on the dialog root. The panel will be anchored to the specified corner or edge while still centering along the opposite axis.
+                    </p>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-sm">
+                        <li><code class="text-red-900">top-start</code> - Anchors the modal to the top-left corner.</li>
+                        <li><code class="text-red-900">top</code> - Anchors the modal to the top-center edge.</li>
+                        <li><code class="text-red-900">top-end</code> - Anchors the modal to the top-right corner.</li>
+                        <li><code class="text-red-900">center</code> - Centers the modal both horizontally and vertically.</li>
+                        <li><code class="text-red-900">bottom-start</code> - Anchors the modal to the bottom-left corner.</li>
+                        <li><code class="text-red-900">bottom</code> - Anchors the modal to the bottom-center edge.</li>
+                        <li><code class="text-red-900">bottom-end</code> - Anchors the modal to the bottom-right corner.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex flex-wrap gap-3">
+                        <button data-tw-toggle="modal" data-tw-target="#modal-top-start" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Top start</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-top" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Top</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-top-end" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Top end</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-center" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Center</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-bottom-start" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Bottom start</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-bottom" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Bottom</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-bottom-end" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Bottom end</button>
+                    </div>
+                </div>
+
+                <dialog id="modal-top-start" data-tw-modal data-tw-position="top-start" data-tw-animation="fade" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-top-start-title" class="self-start w-full max-w-md overflow-hidden rounded-3xl border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-300">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-top-start-title" class="text-lg font-semibold">Top start modal</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This modal uses <code>data-tw-position="top-start"</code>.</p>
+                            <p>It anchors the panel to the upper-left corner of the viewport.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-top" data-tw-modal data-tw-position="top" data-tw-animation="fade" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-top-title" class="self-start w-full max-w-lg overflow-hidden rounded-3xl border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-300">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-top-title" class="text-lg font-semibold">Top aligned modal</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This modal uses <code>data-tw-position="top"</code>.</p>
+                            <p>Use this pattern for notices, short confirmations, or stacked utility windows.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-top-end" data-tw-modal data-tw-position="top-end" data-tw-animation="fade" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-top-end-title" class="self-start w-full max-w-md overflow-hidden rounded-3xl border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-300">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-top-end-title" class="text-lg font-semibold">Top end modal</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This modal uses <code>data-tw-position="top-end"</code>.</p>
+                            <p>It anchors the panel to the upper-right corner of the viewport.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-center" data-tw-modal data-tw-position="center" data-tw-animation="scale" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-center-title" class="w-full max-w-xl overflow-hidden rounded-[2rem] border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-300">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-center-title" class="text-lg font-semibold">Centered modal</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This modal uses <code>data-tw-position="center"</code> and <code>data-tw-animation="scale"</code>.</p>
+                            <p>It is the most neutral default and works well for forms, confirmation dialogs, and content previews.</p>
+                        </article>
+                        <footer class="flex items-center justify-end gap-3 border-t border-stone-200 px-6 py-4">
+                            <button data-tw-dismiss="modal" class="inline-flex h-10 items-center justify-center rounded-xl border border-stone-300 px-4 text-sm font-medium text-stone-700 transition hover:bg-stone-100">Cancel</button>
+                            <button class="inline-flex h-10 items-center justify-center rounded-xl bg-stone-950 px-4 text-sm font-medium text-white transition hover:bg-stone-800">Save changes</button>
+                        </footer>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-bottom-start" data-tw-modal data-tw-position="bottom-start" data-tw-animation="slide-up" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-bottom-start-title" class="self-end w-full max-w-lg overflow-hidden rounded-3xl border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-300">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-bottom-start-title" class="text-lg font-semibold">Bottom start modal</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This modal uses <code>data-tw-position="bottom-start"</code>.</p>
+                            <p>It is useful for task-driven sheets that should stay visually connected to the lower-left corner.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-bottom" data-tw-modal data-tw-position="bottom" data-tw-animation="scale" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-bottom-title" class="w-full max-w-xl overflow-hidden rounded-[2rem] border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-300">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-bottom-title" class="text-lg font-semibold">Bottom modal</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This modal uses <code>data-tw-position="bottom"</code> and <code>data-tw-animation="scale"</code>.</p>
+                            <p>It is the most neutral default and works well for forms, confirmation dialogs, and content previews.</p>
+                        </article>
+                        <footer class="flex items-center justify-end gap-3 border-t border-stone-200 px-6 py-4">
+                            <button data-tw-dismiss="modal" class="inline-flex h-10 items-center justify-center rounded-xl border border-stone-300 px-4 text-sm font-medium text-stone-700 transition hover:bg-stone-100">Cancel</button>
+                            <button class="inline-flex h-10 items-center justify-center rounded-xl bg-stone-950 px-4 text-sm font-medium text-white transition hover:bg-stone-800">Save changes</button>
+                        </footer>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-bottom-end" data-tw-modal data-tw-position="bottom-end" data-tw-animation="slide-up" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-bottom-end-title" class="self-end w-full max-w-lg overflow-hidden rounded-3xl border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-300">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-bottom-end-title" class="text-lg font-semibold">Bottom end modal</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This modal uses <code>data-tw-position="bottom-end"</code>.</p>
+                            <p>It is useful for task-driven sheets that should stay visually connected to the lower-right corner.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+            </section>
+
+            <section>
+                <div class="space-y-2">
+                    <h2 class="text-3xl font-semibold mt-8 mb-4">Modal animations</h2>
+                    <p class="text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                        Modals can use one of several preset animations defined by the <code>data-tw-animation</code> attribute on the dialog root. Each mode combines opacity and transform changes on the root and panel to create a cohesive motion effect.
+                    </p>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-sm">
+                        <li><code class="text-red-900">fade</code> - Fades the entire modal in and out without movement.</li>
+                        <li><code class="text-red-900">scale</code> - Fades the root and scales the panel from 95% to 100%.</li>
+                        <li><code class="text-red-900">slide-down</code> - Fades the root and drops the panel from above while fading in.</li>
+                        <li><code class="text-red-900">slide-up</code> - Fades the root and lifts the panel from below while fading in.</li>
+                        <li><code class="text-red-900">none</code> - Disables visual motion for both root and panel.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex flex-wrap gap-3">
+                        <button data-tw-toggle="modal" data-tw-target="#modal-fade" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Fade</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-scale" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Scale</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-slide-down" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Slide down</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-slide-up" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">Slide up</button>
+                        <button data-tw-toggle="modal" data-tw-target="#modal-none" class="inline-flex h-11 items-center justify-center rounded-full border border-blue-500 bg-blue-600 px-4 text-sm font-medium text-stone-100 transition hover:bg-blue-800">None</button>
+                    </div>
+                </div>
+
+                <dialog id="modal-fade" data-tw-modal data-tw-position="center" data-tw-animation="fade" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-fade-title" class="w-full max-w-md overflow-hidden rounded-3xl border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-500">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-fade-title" class="text-lg font-semibold">Fade animation</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This example uses <code>data-tw-animation="fade"</code>.</p>
+                            <p>The root fades in while the panel keeps its original shape and position.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-scale" data-tw-modal data-tw-position="center" data-tw-animation="scale" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-scale-title" class="w-full max-w-md overflow-hidden rounded-3xl border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-500">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-scale-title" class="text-lg font-semibold">Scale animation</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This example uses <code>data-tw-animation="scale"</code>.</p>
+                            <p>The panel grows from a slightly reduced scale while the backdrop fades in.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-slide-down" data-tw-modal data-tw-position="top" data-tw-animation="slide-down" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-slide-down-title" class="self-start w-full max-w-lg overflow-hidden rounded-3xl border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-500">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-slide-down-title" class="text-lg font-semibold">Slide down animation</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This example uses <code>data-tw-animation="slide-down"</code>.</p>
+                            <p>The panel enters from above, which works nicely for announcement-style windows.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-slide-up" data-tw-modal data-tw-position="bottom" data-tw-animation="slide-up" data-tw-duration="300" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-slide-up-title" class="self-end w-full max-w-xl overflow-hidden rounded-[2rem] border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-500">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-slide-up-title" class="text-lg font-semibold">Slide up animation</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This example uses <code>data-tw-animation="slide-up"</code>.</p>
+                            <p>The panel rises from below and works well for sheet-like interactions.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+                <dialog id="modal-none" data-tw-modal data-tw-position="center" data-tw-animation="none" data-tw-duration="0" class="m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm">
+                    <section data-modal-panel role="dialog" aria-modal="true" aria-labelledby="modal-none-title" class="w-full max-w-md overflow-hidden rounded-3xl border border-stone-200 bg-white text-stone-950 shadow-2xl transition duration-300">
+                        <header class="flex items-center justify-between border-b border-stone-200 px-6 py-4">
+                            <h2 id="modal-none-title" class="text-lg font-semibold">No animation</h2>
+                            <button data-tw-dismiss="modal" class="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-950" aria-label="Close modal">X</button>
+                        </header>
+                        <article class="space-y-3 px-6 py-5 text-sm leading-7 text-stone-700">
+                            <p>This example uses <code>data-tw-animation="none"</code>.</p>
+                            <p>The modal appears immediately without fade, scale, or slide motion.</p>
+                        </article>
+                    </section>
+                </dialog>
+
+            </section>
+
+            <section class="grid gap-6 xl:grid-cols-2">
+                <article class="rounded-3xl border border-stone-800 bg-stone-900/70 p-6 shadow-2xl shadow-black/20">
+                    <h2 class="text-xl font-semibold text-white">Markup</h2>
+                    <pre class="mt-4 overflow-x-auto rounded-2xl bg-stone-950 p-5 text-sm leading-6 text-stone-300"><code>&lt;button
+  data-tw-toggle="modal"
+  data-tw-target="#modal-center"
+&gt;
+  Open modal
+&lt;/button&gt;
+
+&lt;dialog
+  id="modal-center"
+  data-tw-modal
+  data-tw-position="center"
+  data-tw-animation="scale"
+  data-tw-duration="300"
+  class="fixed inset-0 m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-6 opacity-0 transition duration-300 backdrop:bg-stone-950/75 backdrop:backdrop-blur-sm"
+&gt;
+  &lt;section
+    data-modal-panel
+    class="w-full max-w-lg rounded-3xl bg-white text-stone-950 shadow-2xl transition duration-300"
+  &gt;
+    ...
+  &lt;/section&gt;
+&lt;/dialog&gt;</code></pre>
+                </article>
+
+                <article class="rounded-3xl border border-stone-800 bg-stone-900/70 p-6 shadow-2xl shadow-black/20">
+                    <h2 class="text-xl font-semibold text-white">Notes</h2>
+                    <div class="mt-4 space-y-3 text-sm leading-7 text-stone-300">
+                        <p>The root dialog handles positioning and backdrop behavior.</p>
+                        <p>The panel receives focus automatically when the modal opens.</p>
+                        <p>Preset positions and animations are the recommended public API.</p>
+                        <p>Legacy attributes still work for backwards compatibility, but the preferred contract is entirely <code>data-tw-*</code>-based.</p>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <script type="module" src="/tw.vanilla.js"></script>
+    </body>
+</html>
